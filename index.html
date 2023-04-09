@@ -5,23 +5,232 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grid and Flexbox Study Case</title>
+    <style>
+        [class^="item-"] {
+            border: solid 1px;
+            text-align: center;
+            min-height: 50px;
+        }
+
+        .grid-1 {
+            display: grid;
+            grid: 
+                "header header"
+                "a b"
+                "footer footer" / 3fr 1fr;
+            gap: 10px;
+            padding: 30px;
+            border: solid 1px;
+        }
+        .grid-1 .item-1 {
+            grid-area: header;
+        }
+        .grid-1 .item-2 {
+           grid-area: a;
+        }
+        .grid-1 .item-3 {
+           grid-area: b;
+        }
+        .grid-1 .item-4 {
+           grid-area: footer;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid: 
+                "header header header header"
+                "a b c c"
+                "a d d f"
+                "a e e f" / 1fr 1fr 10rem 1fr;
+            gap: 10px;
+            padding: 30px;
+            border: solid 1px;
+        }
+        .grid-2 .item-1 {
+            grid-area: header;
+        }
+        .grid-2 .item-2 {
+           grid-area: a;
+        }
+        .grid-2 .item-3 {
+           grid-area: b;
+        }
+        .grid-2 .item-4 {
+           grid-area: c;
+        }
+        .grid-2 .item-5 {
+            grid-area: d;
+        }
+        .grid-2 .item-6 {
+           grid-area: e;
+        }
+        .grid-2 .item-7 {
+           grid-area: f;
+        }
+
+        [class^="flex-"] [class^="item-"] {
+            flex-grow: 1;
+        }
+        .flex-1 {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 30px;
+            border: solid 1px;
+        }
+        .flex-1 .wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .flex-1 .wrapper .item-2 {
+            flex-grow: 3;
+        }
+
+        .flex-2 {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 30px;
+            border: solid 1px;
+        }
+        .flex-2 .wrapper-1 {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .flex-2 .wrapper-2 {
+            display: flex;
+            flex-grow: 2;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .flex-2 .wrapper-3 {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .flex-2 .wrapper-4 {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            gap: 10px;
+        }
+        .flex-2 .wrapper-5 {
+            display: flex;
+            flex-grow: 2;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .flex-2 .item-4 {
+            flex-grow: 2;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .grid-1 {
+                grid: 
+                "header"
+                "b"
+                "a"
+                "footer" / 1fr;
+            }
+
+            .grid-2 {
+                grid: 
+                "header"
+                "c"
+                "b"
+                "d"
+                "e"
+                "f"
+                "a" / 1fr;
+            }
+
+            .flex-1 .wrapper {
+                flex-direction: column;
+            }
+            .flex-1 .wrapper .item-2 {
+                order: 2;
+            }
+
+            .flex-2 [class^="wrapper-"] {
+                flex-direction: column;
+            }
+            .flex-2 .item-2 {
+                order: 6;
+            }
+            .flex-2 .item-3 {
+                order: 2;
+            }
+            .flex-2 .item-4 {
+                order: 1;
+            }
+            .flex-2 .item-5 {
+                order: 3;
+            }
+            .flex-2 .item-6 {
+                order: 4;
+            }
+            .flex-2 .item-7 {
+                order: 5;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Grid and Flexbox Study Case</h1>
-    <div class="case1">
-        <div class="item1">Header</div>
-        <div class="item2">A</div>
-        <div class="item3">B</div>
-        <div class="item4">Footer</div>
+    <h3>Grid No 1</h3>
+    <div class="grid-1">
+        <div class="item-1">Header</div>
+        <div class="item-2">A</div>
+        <div class="item-3">B</div>
+        <div class="item-4">Footer</div>
     </div>
-    <div class="case2">
-        <div class="item1">Header</div>
-        <div class="item2">A</div>
-        <div class="item3">B</div>
-        <div class="item4">C</div>
-        <div class="item5">D</div>
-        <div class="item6">E</div>
-        <div class="item7">F</div>
+    <br/>
+    <h3>Grid No 2</h3>
+    <div class="grid-2">
+        <div class="item-1">Header</div>
+        <div class="item-2">A</div>
+        <div class="item-3">B</div>
+        <div class="item-4">C</div>
+        <div class="item-5">D</div>
+        <div class="item-6">E</div>
+        <div class="item-7">F</div>
+    </div>
+    <br/>
+    <br/>
+    <h3>Flexbox No 1</h3>
+    <div class="flex-1">
+        <div class="item-1">Header</div>
+        <div class="wrapper">
+            <div class="item-2">A</div>
+            <div class="item-3">B</div>
+        </div>
+        <div class="item-4">Footer</div>
+    </div>
+    <br/>
+    <h3>Flexbox No 2</h3>
+    <div class="flex-2">
+        <div class="item-1">Header</div>
+        <div class="wrapper-1">
+            <div class="item-2">A</div>
+            <div class="wrapper-2">
+                <div class="wrapper-3">
+                    <div class="item-3">B</div>
+                    <div class="item-4">C</div>
+                </div>
+                <div class="wrapper-4">
+                    <div class="wrapper-5">
+                        <div class="item-5">D</div>
+                        <div class="item-6">E</div>
+                    </div>
+                    <div class="item-7">F</div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
